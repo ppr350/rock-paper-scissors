@@ -5,7 +5,7 @@ The Odin Project Project - "Rock, Paper, Scissors"
 
 The Odin Project foundation course project "Rock, Paper, Scissors" assignment is a console based project played directly on the browwer.
 
-The index.html will be mainly untouched.
+The index.html of this project is mainly just a boilerplate.
 
 I will try to implememt the newly-learned problem solving skills to tackle this project. To think like a programmer, and use pseudocode to lay out steps to help writing the program, also break down problems into manageable subproblems.
 
