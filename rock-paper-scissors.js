@@ -1,14 +1,19 @@
+/*--------disable buttons before start---------*/
 let gameIsOn = false
+document.getElementById("rock").disabled = true;
+document.getElementById("paper").disabled = true;
+document.getElementById("scissors").disabled = true;
 
+/*-----Things to happen when click START button-----*/
 document.getElementById("start-button").addEventListener("click", () => {
     getPlayerName();
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissors").disabled = false;
     gameIsOn = true;
-    /*playRound();*/
     /*startGame();*/
     /*gameOver()*/
 })
-
-
 
 /*----------change start button to restart---------*/
 document.getElementById("start-button").addEventListener("click", changeBtn);
@@ -26,7 +31,7 @@ function getPlayerName() {
 }
 
 /*-----------------prompt user to enter name-----------------*/
-/*------------------------method 1---------------------------*/
+/*------------------alternative method 1---------------------*/
 /*---------------------form validation-----------------------*/
 function pName() {
     const playerName = document.getElementById("player-name")
@@ -49,7 +54,7 @@ function pName() {
 }
 
 /*-----------------prompt user to enter name-----------------*/
-/*------------------------method 2---------------------------*/
+/*------------------alternative method 2---------------------*/
 /*-----------display:none/display:inline-block---------------*/
 function getName() {
     const username = document.getElementById("player-name-prompt");
@@ -66,53 +71,57 @@ function getName() {
     
 }
 
-function playRound() {
-    const setPlayerChoice = getPlayerChoice(
-        
-    )
-    const setComputerChoice = getComputerChoice();
-    const getWinner = checkWinner(setPlayerChoice, setComputerChoice);
-    getWinner.push(winner);
-}
+/*-------------------keep scores------------------*/
+let playerScore = 0;
+let computerScore = 0;
 
+/*-----------------get all players choices-----------------*/
+const playRound = document.querySelectorAll(".options");
+playRound.forEach((option) => {
+    option.addEventListener("click", function() {
+        const getPlayerChoice = this.textContent;
+        console.log(getPlayerChoice);
 
+        const computerOptions = ["ROCK", "PAPER", "SCISSORS"];
+        const getComputerChoice = computerOptions[Math.floor(Math.random() * 3)];
+        console.log(getComputerChoice);
 
-const ROCK = document.getElementById("rock").addEventListener("click", chooseRock);
-const PAPER = document.getElementById("paper").addEventListener("click", choosePaper);
-const SCISSORS = document.getElementById("scissors").addEventListener("click", chooseScissors);
+        checkWinner(getPlayerChoice, getComputerChoice);
+        getScore()
+    })
+})
 
-function chooseRock() {
-    if (gameIsOn == true) {
-        console.log("you choose rock")
-    }
-}
-
-function choosePaper() {
-    if (gameIsOn == true) {
-        console.log("you choose paper")
-    }
-}
-
-function chooseScissors() {
-    if (gameIsOn == true) {
-        console.log("you choose scissors")
-    }
-}
-
-
-function checkWinner(setPlayerChoice, setComputerChoice) {
-    if (setPlayerChoice == setComputerChoice) {
+/*-------------------check who is winning-------------------*/
+function checkWinner(getPlayerChoice, getComputerChoice) {
+    if (getPlayerChoice == getComputerChoice) {
         console.log("Tie")
-    } else if (setPlayerChoice == "rock" && setComputerChoice == "scissors") {
+    } else if (getPlayerChoice == "ROCK" && getComputerChoice == "SCISSORS") {
+        playerScore++;
         console.log("You win")
-    } else if (setPlayerChoice == "paper" && setComputerChoice == "rock") {
+    } else if (getPlayerChoice == "PAPER" && getComputerChoice == "ROCK") {
+        playerScore++;
         console.log("You win")
-    } else if (setPlayerChoice == " scissors" && setComputerChoice == "paper") {
+    } else if (getPlayerChoice == "SCISSORS" && getComputerChoice == "PAPER") {
+        playerScore++;
         console.log("You win")
     } else {
+        computerScore++;
         console.log("You lose")
     }
 }
+
+/*---------------get live score-------------------*/
+function getScore() {
+    if (playerScore <= 4 || computerScore <= 4) {
+        document.getElementById("player-score").textContent = playerScore;
+        document.getElementById("computer-score").textContent = computerScore;
+    } else if (playerScore === 5) {
+        document.getElementById("annouce-winner").innerText = "YOU WIN!"
+    } else if (computerScore === 5) {
+        document.getElementById("annouce-winner").innerText = "YOU LOSE!"
+    }
+}
+
 
 /*------------------start again-------------------*/
 function startAgain() {
