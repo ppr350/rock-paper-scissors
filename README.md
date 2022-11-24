@@ -9,4 +9,4 @@ The index.html of this project is mainly just a boilerplate.
 
 I will try to implememt the newly-learned problem solving skills to tackle this project. To think like a programmer, and use pseudocode to lay out steps to help writing the program, also break down problems into manageable subproblems.
 
-The outcome of this project is a playable, text-based Rock, Paper, Scissors game without GUI.
+The outcome of this project is a playable Rock, Paper, Scissors game.
