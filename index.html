@@ -4,11 +4,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="rock-paper-scissors.js"></script>
-    <title>Rock! Paper! Scissors</title>
+    <script defer src="rock-paper-scissors.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Rock! Paper! Scissors!</title>
 </head>
 <body>
-    The game will be played completely from the console,
-    so it will be empty here
+    <!-----------game title----------->
+    <div class="title">DARE TO PLAY</div>
+
+    <!---------play buttons----------->
+    <div class="button-section">
+        <button class="options" id="rock">ROCK</button>
+        <button class="options" id="paper">PAPER</button>
+        <button class="options" id="scissors">SCISSORS</button>
+    </div>
+
+    <!----------scoreboard------------>
+    <div class="score-board">
+        <div class="score-board-title">SCOREBOARD</div>
+        <div class="player-score-board">
+            <div class="player-name" id="player-name-prompt">LOSER</div>
+            <div class="player-score" id="player-score">0</div>
+        </div>
+        <div class="computer-score-board">
+            <div class="computer" id="computer">COMPUTER</div>
+            <div class="computer-score" id="computer-score">0</div>
+        </div>
+    </div>
+
+    <!----------start button----------->
+    <button class="start-button" id="start-button">START</button>
+
+    <!------prompt user to enter name------>
+    <!--------------method 1--------------->
+    <!-----------form validation----------->
+    <div id="error"></div>
+    <form id="form" action="" method="POST">
+        <div>
+            <label for="name">Name</label>
+            <input id="player-name" name="name" type="text" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!------prompt user to enter name------>
+    <!--------------method 2--------------->
+    <!--display:none/display:inline-block-->
+    <form id="form-method-2" action="" method="POST">
+        <div id=text><button onclick=getName()>click</button>testing</div>
+        <div id=name-box style="display:none">
+            <div>
+                <label for="name">Name</label>
+                <input id="player-name" name="name" type="text" required>
+            </div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+
+    <!---------hidden buttons---------->
+    <div class="confirm-box">
+        <h2 class="same-player-question" id="same-player-question">Same Player?</h2>
+        <button class="same-player" onclick="isConfirm(true)">Yes</button>
+        <button class="different-player" onclick="isConfirm(false)">No</button>
+        <div onclick="newPlayerConfirmBox()" class="closeConfirmBox">&#10006;</div>
+    </div>
+
+    <!--------------footer-------------->
+    <div class="footer">
+        Copyright © Chee Hong "Kobe" Wong
+    </div>
+
+
+
 </body>
 </html>

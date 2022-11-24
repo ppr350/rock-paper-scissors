@@ -1,138 +1,130 @@
-//Get winner of each round and store in its list:
-const winners = [];
+let gameIsOn = false
 
-//A function called "game", it calls "playRound" inside of it to play 5 round:
-function game() {
-    //A for loop to loop "playRound" function until it reaches 5 rounds (or more if tie game)
-    for(let i = 5; i > 0 ; i--){
-        //console.log(`Remaining round: ${gameRound}`);
-        console.log(`Round ${i}`)
-        playRound();
-    }
-    //Announce winner
-    logWins();
-    if(computerScore == playerScore) {
-        alert("Tie Game! No winner!")
-    } else if (playerScore > computerScore) {
-        alert("You win!") 
-    } else {
-        alert("You lose!")
+document.getElementById("start-button").addEventListener("click", () => {
+    getPlayerName();
+    gameIsOn = true;
+    /*playRound();*/
+    /*startGame();*/
+    /*gameOver()*/
+})
+
+
+
+/*----------change start button to restart---------*/
+document.getElementById("start-button").addEventListener("click", changeBtn);
+function changeBtn() {
+    document.getElementById("start-button").innerHTML = "RESTART"
+}
+
+/*-----------------get player name-----------------*/
+function getPlayerName() {
+    let playerName = prompt("What's your name?", "LOSER");
+    if (playerName != null) {
+        document.getElementById("player-name-prompt").innerHTML = playerName.toUpperCase();
+        alert(`Hey ${playerName.charAt(0).toUpperCase() + playerName.slice(1)}, lets's play!`);
     }
 }
 
+/*-----------------prompt user to enter name-----------------*/
+/*------------------------method 1---------------------------*/
+/*---------------------form validation-----------------------*/
+function pName() {
+    const playerName = document.getElementById("player-name")
+    const form = document.getElementById("form")
+    const errorElement = document.getElementById("error")
 
-//////A function called "playRound" that take 2 parameters, which are "playerSelection" and "computerSelection":
+    form.addEventListener('submit', (e) => {
+        let messages = []
+        if (playerName.value === '' || playerName.value == null) {
+            messages.push("Name is required")
+        }
+        /*if (playerName.value.length >= 15) {
+            messages.push("The name is too long :(")
+        }*/
+        if (messages.length > 0) {
+            e.preventDefault()
+            errorElement.innerText = messages.join(', ')
+        }
+    })
+}
+
+/*-----------------prompt user to enter name-----------------*/
+/*------------------------method 2---------------------------*/
+/*-----------display:none/display:inline-block---------------*/
+function getName() {
+    const username = document.getElementById("player-name-prompt");
+    const stats = document.getElementById("name-box").style.display;
+    const form = document.getElementById("form")
+    if (stats =="none") {
+        document.getElementById("name-box").style.display = "inline-block";
+        if (username.value == "") {
+            messages.push("Name is required")
+        }
+    }
+    document.getElementById("player-name-prompt").innerHTML = username;
+    console.log(username);
+    
+}
+
 function playRound() {
-    //Codes to compare 2 items:
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
-    //Find out who is the winner of each round from "checkWinner" function:
-    const winner = checkWinner(playerSelection, computerSelection);
-    //Transfer the winner of each round to the "winners" list:
-    winners.push(winner);
+    const setPlayerChoice = getPlayerChoice(
+        
+    )
+    const setComputerChoice = getComputerChoice();
+    const getWinner = checkWinner(setPlayerChoice, setComputerChoice);
+    getWinner.push(winner);
 }
 
 
-function checkWinner(playerSelection, computerSelection) {
-    //If the outcome is draw:
-    if (playerSelection == computerSelection) {
-        console.log("It\'s a tie, let\'s try again!!")
-        //gameRound += 1;
-        return "Tie";
-        //"if statements" when player wins:
-    } else if (playerSelection == "rock" && computerSelection == "scissors") {
-        console.log("You win!")
-        //Add 1 point to "playerScore":
-        playerScore += 1;
-        //gameRound -= 1;
-        return "Player"
-    } else if (playerSelection == "paper" && computerSelection == "rock") {
-        console.log("You win!")
-        //Add 1 point to "playerScore":
-        playerScore += 1;
-        //gameRound -= 1;
-        return "Player";
-    } else if (playerSelection == "scissors" && computerSelection == "paper") {
-        //console.log("You win!")
-        //Add 1 point to "playerScore":
-        playerScore += 1;
-        //gameRound -= 1;
-        return "Player";
+
+const ROCK = document.getElementById("rock").addEventListener("click", chooseRock);
+const PAPER = document.getElementById("paper").addEventListener("click", choosePaper);
+const SCISSORS = document.getElementById("scissors").addEventListener("click", chooseScissors);
+
+function chooseRock() {
+    if (gameIsOn == true) {
+        console.log("you choose rock")
+    }
+}
+
+function choosePaper() {
+    if (gameIsOn == true) {
+        console.log("you choose paper")
+    }
+}
+
+function chooseScissors() {
+    if (gameIsOn == true) {
+        console.log("you choose scissors")
+    }
+}
+
+
+function checkWinner(setPlayerChoice, setComputerChoice) {
+    if (setPlayerChoice == setComputerChoice) {
+        console.log("Tie")
+    } else if (setPlayerChoice == "rock" && setComputerChoice == "scissors") {
+        console.log("You win")
+    } else if (setPlayerChoice == "paper" && setComputerChoice == "rock") {
+        console.log("You win")
+    } else if (setPlayerChoice == " scissors" && setComputerChoice == "paper") {
+        console.log("You win")
     } else {
-        console.log("You lose!!")
-        //Add 1 point to "computerScore":
-        computerScore += 1;
-        //gameRound -= 1;
-        return "Computer";
-    }
-    //return the result of the choice;
-}
-
-
-function getPlayerChoice() {
-    //Create a variable to store a list of choice
-    const userInputAnswer = prompt("rock, paper or scissors?");
-    //In case player hits "Escape", the game won't break:
-    while (userInputAnswer == null) {
-        //Run "getPlayerChoice" instead of the method below to avoid crash:
-        getPlayerChoice();
-        //The method below will crash if player press "Escape" again:
-        //userInputAnswer = prompt("try again, rock, paper or scissors?");
-    }
-    //Make an variable to lowercase user choice:
-    makeUserInputLowerCase = userInputAnswer.toLowerCase();
-    //Temporary console.log out the user result:
-    console.log(`Player chose: ${makeUserInputLowerCase}`);
-    /////Create a variable to store rock, paper, scissors (The game choice)
-    const gestures = ["rock", "paper", "scissors"];
-    //Make "if and else" statement to check if user answer is valid:
-    if (gestures.indexOf(makeUserInputLowerCase) >= 0 )
-    {
-        //show message of the user choice:
-        alert(`Your choice is ${makeUserInputLowerCase}.`)
-        //return gestures;
-        return makeUserInputLowerCase;
-    } else {
-        //show error message when user input wrong answer:
-        alert("Please try again.");
-        //ask player to try again:
-        getPlayerChoice();
+        console.log("You lose")
     }
 }
 
+/*------------------start again-------------------*/
+function startAgain() {
+    let getNewPlayerName = getElementById("same-player-question");
 
-//////A function called "getComputerChoice":
-function getComputerChoice() {
-    //Declare an array stored in a variable:
-    const gestures = ["rock", "paper", "scissors"];
-    //Declare a variable, and it random select one of the items in the array above:
-    const randomChoiceComputer = gestures[Math.floor(Math.random() * gestures.length)];
-    //Temporary console.log out the computer result:
-    console.log(`Computer chose: ${randomChoiceComputer}`);
-    //return randomChoiceComputer to the function;
-    return randomChoiceComputer;
+    /*Ask if same player or new player*/
 }
 
-//Create a variable to store player score:
-let playerScore = 0;
-//Create a variable to store computer score:
-let computerScore = 0;
+function GameOver() {
+    /*pop up "Start Again?"*/
 
-function logWins() {
-    //Create a variable to store player score:
-    console.log(winners);
-    console.log(`Computer\'s score is ${computerScore}`);
-    console.log(`Your score is ${playerScore}`);
+    /*if "Start Again" is True, make "Same Player" Box visible, and call it"
+
+    /*change "Start" to "Start Again"*/
 }
-
-//Call the game to start:
-game();
-
-/*
-Bugs report:
-- Somtimes the game runs 6 times without tie game
-- Sometimes the game runs 6 times without 3 tie games
-
-Not bugs, but need to fix (fixed):
-- Game round doesn't count down
-*/
