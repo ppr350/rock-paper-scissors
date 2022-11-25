@@ -19,6 +19,10 @@ document.getElementById("start-button").addEventListener("click", () => {
 document.getElementById("start-button").addEventListener("click", changeBtn);
 function changeBtn() {
     document.getElementById("start-button").innerHTML = "RESTART"
+    document.getElementById("annouce-winner").innerText = ""
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissors").disabled = false;
 }
 
 /*-----------------get player name-----------------*/
@@ -112,28 +116,40 @@ function checkWinner(getPlayerChoice, getComputerChoice) {
 
 /*---------------get live score-------------------*/
 function getScore() {
-    if (playerScore <= 4 || computerScore <= 4) {
+    if (playerScore < 5 && computerScore < 5) {
         document.getElementById("player-score").textContent = playerScore;
         document.getElementById("computer-score").textContent = computerScore;
     } else if (playerScore === 5) {
         document.getElementById("annouce-winner").innerText = "YOU WIN!"
+        document.getElementById("player-score").textContent = playerScore;
+        document.getElementById("computer-score").textContent = computerScore;
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+        gameIsOn = false
     } else if (computerScore === 5) {
         document.getElementById("annouce-winner").innerText = "YOU LOSE!"
+        document.getElementById("player-score").textContent = playerScore;
+        document.getElementById("computer-score").textContent = computerScore;
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+        gameIsOn = false
     }
 }
 
 
 /*------------------start again-------------------*/
-function startAgain() {
+/*function startAgain() {
     let getNewPlayerName = getElementById("same-player-question");
 
-    /*Ask if same player or new player*/
-}
+    Ask if same player or new player
+}*/
 
-function GameOver() {
-    /*pop up "Start Again?"*/
+/*function GameOver() {
+    pop up "Start Again?"
 
     /*if "Start Again" is True, make "Same Player" Box visible, and call it"
 
-    /*change "Start" to "Start Again"*/
-}
+    change "Start" to "Start Again"
+}*/
