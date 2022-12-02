@@ -10,16 +10,34 @@ document.getElementById("start-button").addEventListener("click", () => {
     document.getElementById("rock").disabled = false;
     document.getElementById("paper").disabled = false;
     document.getElementById("scissors").disabled = false;
+    if (document.getElementById("start-button").innerHTML == "START") {
+        document.getElementById("title").innerHTML = "LET'S PLAY!";
+        playerScore = 0;
+        computerScore = 0;
+        document.getElementById("player-score").textContent = playerScore;
+        document.getElementById("computer-score").textContent = computerScore;
+    } else if (document.getElementById("start-button").innerHTML == "RESTART") {
+        document.getElementById("title").innerHTML = "LET'S TRY AGAIN";
+        playerScore = 0;
+        computerScore = 0;
+        document.getElementById("player-score").textContent = playerScore;
+        document.getElementById("computer-score").textContent = computerScore;
+    }
     gameIsOn = true;
+
     /*startGame();*/
     /*gameOver()*/
 })
+
+function clearBoard() {
+    document.getElementById("title").innerHTML = "TRY AGAIN";
+
+}
 
 /*----------change start button to restart---------*/
 document.getElementById("start-button").addEventListener("click", changeBtn);
 function changeBtn() {
     document.getElementById("start-button").innerHTML = "RESTART"
-    document.getElementById("annouce-winner").innerText = ""
     document.getElementById("rock").disabled = false;
     document.getElementById("paper").disabled = false;
     document.getElementById("scissors").disabled = false;
@@ -116,11 +134,14 @@ function checkWinner(getPlayerChoice, getComputerChoice) {
 
 /*---------------get live score-------------------*/
 function getScore() {
+    /*const showWinnerBox = document.querySelector("winner-box");*/
+
     if (playerScore < 5 && computerScore < 5) {
         document.getElementById("player-score").textContent = playerScore;
         document.getElementById("computer-score").textContent = computerScore;
     } else if (playerScore === 5) {
-        document.getElementById("annouce-winner").innerText = "YOU WIN!"
+        document.getElementById("title").innerText = "YOU WIN!"
+        /*document.querySelector("title").textContent == "YOU WIN!"*/
         document.getElementById("player-score").textContent = playerScore;
         document.getElementById("computer-score").textContent = computerScore;
         document.getElementById("rock").disabled = true;
@@ -128,7 +149,8 @@ function getScore() {
         document.getElementById("scissors").disabled = true;
         gameIsOn = false
     } else if (computerScore === 5) {
-        document.getElementById("annouce-winner").innerText = "YOU LOSE!"
+        document.getElementById("title").innerText = "YOU LOSE"
+        /*document.querySelector("title").textContent == "YOU LOSE!"*/
         document.getElementById("player-score").textContent = playerScore;
         document.getElementById("computer-score").textContent = computerScore;
         document.getElementById("rock").disabled = true;
@@ -137,6 +159,7 @@ function getScore() {
         gameIsOn = false
     }
 }
+
 
 
 /*------------------start again-------------------*/
