@@ -60,26 +60,11 @@ body {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
     }
-
-    /*color: goldenrod;
-    font-size: 50px;
-    text-align: center;
-    font-weight: bolder;
-    background-color: rgb(255, 254, 199);
-    width: 500px;
-    height: 60px;
-    border: 4px solid rgb(208, 179, 105);
-    border-radius: 20px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    padding:15px;
-    margin: 25px;*/
 }
 
 .start-button,
 .button,
-.options,
-.same-player,
-.different-player {
+.options {
     color: black;
     background-color: lightyellow;
     width: 150px;
@@ -164,28 +149,14 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.start-button:hover,
-.same-player:hover,
-.different-player:hover {
+.start-button:hover {
     color: white;
     background-color: gold;
     border: 2px solid lightyellow;
     transition-duration: 0.3s;
 }
 
-.hiddenBtns {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    width: 500px;
-    height: 60px;
-    background-color: goldenrod;
-}
-
-.confirm-box {
-    visibility: hidden;
+.playround-box {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -198,23 +169,21 @@ body {
     padding:15px;
     margin: 25px;
     width: 500px;
-    height: 100px;
+    height: 60px;
 }
 
-.closeConfirmBox,
-.same-player-question {
+#play-message {
+    margin: 0 auto;
     color: goldenrod;
-    font-size: 35px;
+    font-size: 30px;
+    text-align: center;
+    animation: blinker 1.5s linear infinite;
 }
 
-.closeConfirmBox:hover {
-    color: black;
-}
-
-.same-player,
-.different-player,
-.closeConfirmBox {
-    cursor: pointer;
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }
 
 .footer {
@@ -225,5 +194,4 @@ body {
 #form,
 #form-method-2 {
     display: none;
-
 }

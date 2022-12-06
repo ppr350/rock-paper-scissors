@@ -34,8 +34,14 @@
         </div>
     </div>
 
+    <!---------hidden buttons---------->
+    <div class="playround-box">
+        <h2 id="play-message">PRESS START TO PLAY</h2>
+    </div>
+
     <!----------start button----------->
     <button class="start-button" id="start-button">START</button>
+
 
     <!------prompt user to enter name------>
     <!--------------method 1--------------->
@@ -62,14 +68,6 @@
             <button type="submit">Submit</button>
         </div>
     </form>
-
-    <!---------hidden buttons---------->
-    <div class="confirm-box">
-        <h2 class="same-player-question" id="same-player-question">Same Player?</h2>
-        <button class="same-player" onclick="isConfirm(true)">Yes</button>
-        <button class="different-player" onclick="isConfirm(false)">No</button>
-        <div onclick="newPlayerConfirmBox()" class="closeConfirmBox">&#10006;</div>
-    </div>
 
     <!--------------footer-------------->
     <div class="footer">
