@@ -25,7 +25,7 @@
     <div class="score-board">
         <div class="score-board-title">SCOREBOARD</div>
         <div class="player-score-board">
-            <div class="player-name" id="player-name-prompt">LOSER</div>
+            <div class="player-name" id="player-name-prompt">PLAYER</div>
             <div class="player-score" id="player-score">0</div>
         </div>
         <div class="computer-score-board">
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <!---------hidden buttons---------->
+    <!-----------bottom box------------>
     <div class="playround-box">
         <h2 id="play-message">PRESS START TO PLAY</h2>
     </div>
@@ -44,37 +44,14 @@
 
 
     <!------prompt user to enter name------>
-    <!--------------method 1--------------->
-    <!-----------form validation----------->
-    <div id="error"></div>
-    <form id="form" action="" method="POST">
-        <div>
-            <label for="name">Name</label>
-            <input id="player-name" name="name" type="text" required>
-        </div>
-        <button type="submit">Submit</button>
+    <form name="nameForm" id="nF" method="GET" action="?">
+        <input type="text" id="userform" name="bob" value="" placeholder="NAME">
+        <input type="submit" id="submit-button" value="PLAY">
     </form>
 
-    <!------prompt user to enter name------>
-    <!--------------method 2--------------->
-    <!--display:none/display:inline-block-->
-    <form id="form-method-2" action="" method="POST">
-        <div id=text><button onclick=getName()>click</button>testing</div>
-        <div id=name-box style="display:none">
-            <div>
-                <label for="name">Name</label>
-                <input id="player-name" name="name" type="text" required>
-            </div>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
-
-    <!--------------footer-------------->
-    <div class="footer">
+        <!--------------footer-------------->
+    <footer id="footer">
         Copyright © Chee Hong "Kobe" Wong
-    </div>
-
-
-
+    </footer>
 </body>
 </html>
