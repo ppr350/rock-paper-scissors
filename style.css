@@ -76,6 +76,7 @@ body {
     margin: 10px 10px;
     cursor: pointer;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative;
 }
 
 .button:hover,
@@ -133,6 +134,7 @@ body {
     overflow: hidden;
 }
 
+.quit-button,
 .start-button {
     color: black;
     background-color: lightyellow;
@@ -148,6 +150,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+.quit-button:hover,
 .start-button:hover {
     color: white;
     background-color: gold;
@@ -185,8 +188,13 @@ body {
     }
 }
 
+.quit-button {
+    margin-bottom: 30px;
+    bottom: 60px;
+}
+
 #footer {
-    position: absolute;
+    position: relative;
     color: rgb(255, 255, 104);
     bottom: 0;
     height: 2.5rem;
@@ -204,7 +212,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     padding:15px;
     margin: 25px;
-    font-size: 50px; 
+    font-size: 50px;
 }
 
 #submit-button {
@@ -225,6 +233,7 @@ body {
 #form,
 #form-method-2 {
     display: none;
+    position: relative;
 }
 
 #userform {
@@ -235,4 +244,6 @@ body {
     padding: 5px;
     font-size: 20px;
 }
+
+
 
