@@ -10,7 +10,7 @@ keyDisabled();
 /*-----Things to happen when click START button-----*/
 let newGame = document.getElementById("start-button").addEventListener("click", () => {
     keyEnable();
-    if (document.getElementById("start-button").innerHTML = "START") {
+    if (document.getElementById("start-button").innerHTML == "START") {
         document.getElementById("play-message").innerText = "TELL ME YOUR NAME PLEASE"
         document.getElementById("nF").style.visibility = "visible";
         document.forms['nameForm'].addEventListener('submit', function (event) {

@@ -200,6 +200,11 @@ body {
     height: 2.5rem;
 }
 
+.name-form-container {
+    width: 500px;
+    height: 150px;
+}
+
 #nF {
     display: flex;
     align-items: center;
