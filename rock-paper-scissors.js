@@ -9,7 +9,6 @@ keyDisabled();
 
 /*-----Things to happen when click START button-----*/
 let newGame = document.getElementById("start-button").addEventListener("click", () => {
-    keyEnable();
     if (document.getElementById("start-button").innerHTML == "START") {
         document.getElementById("play-message").innerText = "TELL ME YOUR NAME PLEASE"
         document.getElementById("nF").style.visibility = "visible";
@@ -22,13 +21,14 @@ let newGame = document.getElementById("start-button").addEventListener("click", 
         })
         document.getElementById("title").innerHTML = "LET'S PLAY!";
         changeBtn();
-        clearBoard();
+        clearBoard();   
     } else if (document.getElementById("start-button").innerHTML == "RESTART") {
         document.getElementById("title").innerHTML = "LET'S TRY AGAIN";
         document.getElementById("play-message").innerText = "GOOD LUCK!"
         clearBoard();
     }
     gameIsOn = true;
+    keyEnable();
 })
 
 /*----------------reset score board----------------*/
@@ -111,17 +111,5 @@ function getScore() {
     }
 }
 
+/*---------------hide name entry box--------------*/
 document.getElementById("nF").style.visibility = "hidden";
-
-function quitGame() {
-    clearBoard();
-    keyDisabled();
-    document.getElementById("start-button").innerHTML = "START";
-    document.getElementById("title").innerHTML == "DARE TO PLAY";
-    document.getElementById("play-message").innerText = "PRESS START TO PLAY";
-    newGame;
-}
-
-document.getElementById("quit-button").addEventListener("click", () => {
-    quitGame();
-})

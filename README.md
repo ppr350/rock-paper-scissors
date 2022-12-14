@@ -1,12 +1,10 @@
 # rock-paper-scissors
 
-The Odin Project Project - "Rock, Paper, Scissors"
-(Foundation Course)
+The Odin Project Project - "Revisiting Rock, Paper, Scissors"
+(Foundations Course)
 
-The Odin Project foundation course project "Rock, Paper, Scissors" assignment is a console based project played directly on the browwer.
+This is an improved version of the previous Rock Paper Scissors game that I have done. Instead of relying on user input of the previous version. This UI version can be played by clicking buttons. User can also enter his/her name but that is not compulsory. This project used HTML, CSS and Javascript.
 
-The index.html of this project is mainly just a boilerplate.
+The Odin Project's assignment requests student to use DOM manipulation to write the code. The learning outcome is to use the skills I have learned so far from The Odin Project and other places.
 
-I will try to implememt the newly-learned problem solving skills to tackle this project. To think like a programmer, and use pseudocode to lay out steps to help writing the program, also break down problems into manageable subproblems.
-
-The outcome of this project is a playable Rock, Paper, Scissors game.
+A new branch was made for this new improved UI version; and it was merged into the main branch when finished.
